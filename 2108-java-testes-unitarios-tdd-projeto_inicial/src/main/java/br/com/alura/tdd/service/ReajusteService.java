@@ -6,20 +6,8 @@ import java.math.BigDecimal;
 
 public class ReajusteService {
     public void fazerReajuste(Funcionario funcionario, Desempenho desempenho) {
-
-        if (desempenho == Desempenho.A_DESEJAR){
-            BigDecimal reajuste = funcionario.getSalario().multiply(new BigDecimal("0.03"));
+            BigDecimal percentual = desempenho.ajusteDesempenho();
+            BigDecimal reajuste = funcionario.getSalario().multiply(percentual);
             funcionario.reajustarSalario(reajuste);
-        }
-        else if (desempenho == Desempenho.BOM) {
-            BigDecimal reajuste = funcionario.getSalario().multiply(new BigDecimal("0.15"));
-            funcionario.reajustarSalario(reajuste);
-        }
-        else{
-            BigDecimal reajuste = funcionario.getSalario().multiply(new BigDecimal("0.2"));
-            funcionario.reajustarSalario(reajuste);
-        }
-
-
     }
 }
